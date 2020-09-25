@@ -1,3 +1,5 @@
+import math
+
 import numpy
 from PIL import Image
 
@@ -8,7 +10,8 @@ def main():
 	max_pixel = 1024
 	for x in range(0, max_pixel):
 		for y in range(0, max_pixel):
-			data[x, y] = [x/4, 0, 0]
+			red = math.floor((y/4) / 16) * 16
+			data[x, y] = [red, 0, 0]
 			pass
 		pass
 
