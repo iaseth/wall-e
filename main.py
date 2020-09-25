@@ -11,7 +11,8 @@ def main():
 	for x in range(0, max_pixel):
 		for y in range(0, max_pixel):
 			red = math.floor((y/4) / 16) * 16
-			data[x, y] = [red, 0, 0]
+			green = math.floor((x/4) / 16) * 16
+			data[x, y] = [red, green, 0]
 			pass
 		pass
 
