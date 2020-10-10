@@ -17,13 +17,19 @@ class Color():
 
 class Resolution():
 	def __init__(self, jsonObject):
+		self.name = jsonObject["name"]
+		self.height = jsonObject["height"]
+		self.width = jsonObject["width"]
 		pass
+
+	def __str__(self):
+		return f"{self.name} [{self.width}x{self.height}]"
 
 
 class App():
 	def __init__(self):
 		self.setupColors()
-		self.resolutions = []
+		self.setupResolutions()
 		pass
 
 	def setupColors(self):
@@ -37,6 +43,13 @@ class App():
 		pass
 
 	def setupResolutions(self):
+		with open("resolutions.json") as f:
+			jo = json.loads(f.read())
+
+		self.resolutions = []
+		for jsonObject in jo["resolutions"]:
+			resolution = Resolution(jsonObject)
+			self.resolutions.append(resolution)
 		pass
 
 	def printColors(self):
@@ -44,10 +57,16 @@ class App():
 			print(color)
 		pass
 
+	def printResolutions(self):
+		for resolution in self.resolutions:
+			print(resolution)
+		pass
+
 
 def chessboard_stuff():
 	app = App()
 	app.printColors()
+	app.printResolutions()
 	pass
 
 
