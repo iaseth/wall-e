@@ -1,0 +1,24 @@
+{
+	"resolutions": [
+		{
+			"name": "HD",
+			"height": 768,
+			"width": 1366
+		},
+		{
+			"name": "FHD",
+			"height": 1080,
+			"width": 1920
+		},
+		{
+			"name": "QHD",
+			"height": 1440,
+			"width": 2560
+		},
+		{
+			"name": "UHD",
+			"height": 2160,
+			"width": 3840
+		}
+	]
+}
