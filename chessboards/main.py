@@ -1,3 +1,4 @@
+import os
 import math
 import json
 
@@ -11,6 +12,21 @@ class Color():
 		self.color = jsonObject["color"]
 		pass
 
+	def getRGB(self):
+		hex_string = self.color.strip().lstrip("#")
+		if len(hex_string) == 3:
+			red = int(hex_string[0] + hex_string[0], 16)
+			green = int(hex_string[1] + hex_string[1], 16)
+			blue = int(hex_string[2] + hex_string[2], 16)
+			return [red, green, blue]
+		elif len(hex_string) == 6:
+			red = int(hex_string[0:2], 16)
+			green = int(hex_string[2:4], 16)
+			blue = int(hex_string[4:6], 16)
+			return [red, green, blue]
+		else:
+			return [0, 200, 0]
+
 	def __str__(self):
 		return f"{self.name} [{self.color}]"
 
@@ -21,6 +37,10 @@ class Resolution():
 		self.height = jsonObject["height"]
 		self.width = jsonObject["width"]
 		pass
+
+	def getNumpyArray(self):
+		data = numpy.zeros((self.height, self.width, 3), dtype=numpy.uint8)
+		return data
 
 	def __str__(self):
 		return f"{self.name} [{self.width}x{self.height}]"
@@ -33,11 +53,51 @@ class Chessboard():
 		self.resolution = resolution
 		pass
 
+	def hasTwoColors(self):
+		return (self.primary != self.secondary)
+
+	def existsOnDisk(self):
+		if os.path.isfile(self.filepath()):
+			return True
+		else:
+			return False
+		pass
+
+	def saveToDisk(self):
+		data = self.resolution.getNumpyArray()
+
+		primary = self.primary.getRGB()
+		secondary = self.secondary.getRGB()
+
+		cell_height = math.ceil(self.resolution.height / 8)
+		cell_width = math.ceil(self.resolution.width / math.floor(self.resolution.width/cell_height))
+
+		for x in range(0, self.resolution.height):
+			for y in range(0, self.resolution.width):
+				cx = math.floor(x / cell_height)
+				cy = math.floor(y / cell_width)
+				cx_even = cx%2 == 0
+				cy_even = cy%2 == 0
+				white = (cx_even and cy_even) or ((not cx_even) and (not cy_even))
+				if white:
+					data[x, y] = primary
+				else:
+					data[x, y] = secondary
+				pass
+			pass
+
+		im = Image.fromarray(data)
+		im.save(self.filepath())
+		pass
+
+	def filepath(self):
+		return f"chessboards/{self.filename()}"
+
 	def filename(self):
-		return f"{self.primary.name}_{self.secondary.name}_{self.resolution.name}.png"
+		return f"chessboard_{self.primary.name}_{self.secondary.name}_{self.resolution.name}.png"
 
 	def __str__(self):
-		return f"{self.filename()}"
+		return f"({self.primary.name}|{self.secondary.name}) {self.resolution}"
 
 
 class App():
@@ -73,7 +133,8 @@ class App():
 			for secondary in self.colors:
 				for resolution in self.resolutions:
 					chessboard = Chessboard(primary, secondary, resolution)
-					self.chessboards.append(chessboard)
+					if chessboard.hasTwoColors():
+						self.chessboards.append(chessboard)
 		pass
 
 	def printColors(self):
@@ -93,10 +154,22 @@ class App():
 			x += 1
 		pass
 
+	def saveChessboards(self):
+		x = 0
+		for chessboard in self.chessboards:
+			print(f"({x+1} of {len(self.chessboards)}) Saving chessboard {chessboard} ...")
+			if chessboard.existsOnDisk():
+				print(f"\tFile already exists: {chessboard.filepath()}")
+			else:
+				chessboard.saveToDisk()
+				print(f"\tSaved: {chessboard.filepath()}")
+			x += 1
+		pass
+
 
 def chessboard_stuff():
 	app = App()
-	app.printChessboards()
+	app.saveChessboards()
 	pass
 
 
