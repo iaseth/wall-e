@@ -91,7 +91,7 @@ class Chessboard():
 		pass
 
 	def filepath(self):
-		return f"pngs/{self.filename()}"
+		return f"pngs/chessboards/{self.filename()}"
 
 	def filename(self):
 		return f"chessboard_{self.primary.name}_{self.secondary.name}_{self.resolution.name}.png"
@@ -108,7 +108,7 @@ class App():
 		pass
 
 	def setupColors(self):
-		with open("colors.json") as f:
+		with open("jsons/colors.json") as f:
 			jo = json.loads(f.read())
 
 		self.colors = []
@@ -118,7 +118,7 @@ class App():
 		pass
 
 	def setupResolutions(self):
-		with open("resolutions.json") as f:
+		with open("jsons/resolutions.json") as f:
 			jo = json.loads(f.read())
 
 		self.resolutions = []
