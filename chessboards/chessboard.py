@@ -91,7 +91,7 @@ class Chessboard():
 		pass
 
 	def filepath(self):
-		return f"chessboards/{self.filename()}"
+		return f"pngs/{self.filename()}"
 
 	def filename(self):
 		return f"chessboard_{self.primary.name}_{self.secondary.name}_{self.resolution.name}.png"
