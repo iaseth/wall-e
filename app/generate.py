@@ -22,7 +22,7 @@ def test_stuff():
 	pass
 
 
-def pywall_stuff():
+def generate_stuff():
 	app = WallEApp()
 	app.save_chessboards()
 	app.save_solidcolors()
@@ -30,7 +30,7 @@ def pywall_stuff():
 
 
 def main():
-	pywall_stuff()
+	generate_stuff()
 	#test_stuff()
 	pass
 
