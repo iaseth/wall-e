@@ -125,7 +125,7 @@ class WallEApp():
 			if chessboard.exists_on_disk():
 				print(f"\tFile already exists: {chessboard.filepath()}")
 			else:
-				#chessboard.save_to_disk()
+				chessboard.save_to_disk()
 				print(f"\tSaved: {chessboard.filepath()}")
 			benchmark.record_event(chessboard)
 			x += 1

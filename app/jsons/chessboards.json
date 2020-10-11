@@ -1,5 +1,11 @@
 {
 	"colors": [
+		["black", "facebook"],
+		["black", "instagram"],
+		["black", "linkedin"],
+		["black", "twitter"],
+		["black", "youtube"],
+
 		["black", "grey"],
 		["grey", "white"],
 		["white", "black"]

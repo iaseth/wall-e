@@ -24,7 +24,8 @@ def some_stuff():
 
 def chessboard_stuff():
 	app = WallEApp()
-	app.save_solidcolors()
+	app.save_chessboards()
+	#app.save_solidcolors()
 	pass
 
 
