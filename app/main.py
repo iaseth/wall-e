@@ -2,10 +2,11 @@ import math
 
 import numpy
 from PIL import Image
+from pywall.walleapp import WallEApp
 
 
 
-def main():
+def some_stuff():
 	data = numpy.zeros((1024, 1024, 3), dtype=numpy.uint8)
 	max_pixel = 1024
 	for x in range(0, max_pixel):
@@ -18,6 +19,17 @@ def main():
 
 	im = Image.fromarray(data)
 	im.save('test.png')
+	pass
+
+
+def chessboard_stuff():
+	app = WallEApp()
+	app.saveChessboards()
+	pass
+
+
+def main():
+	chessboard_stuff()
 	pass
 
 

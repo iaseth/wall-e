@@ -4,9 +4,9 @@ import json
 import numpy
 from PIL import Image
 
-from pywall.color import Color
-from pywall.resolution import Resolution
-from pywall.chessboard import Chessboard
+from .color import Color
+from .resolution import Resolution
+from .chessboard import Chessboard
 
 
 
@@ -93,16 +93,3 @@ class WallEApp():
 		pass
 
 
-def chessboard_stuff():
-	app = WallEApp()
-	app.saveChessboards()
-	pass
-
-
-def main():
-	chessboard_stuff()
-
-
-if __name__ == '__main__':
-	main()
-	pass
