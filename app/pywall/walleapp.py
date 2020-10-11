@@ -34,7 +34,7 @@ class WallEApp():
 			self.resolutions_json = json.loads(f.read())
 
 		self.resolutions = []
-		for jsonObject in self.resolutions_json["resolutions"]:
+		for jsonObject in self.resolutions_json["best"]:
 			resolution = Resolution(jsonObject)
 			self.resolutions.append(resolution)
 		pass
