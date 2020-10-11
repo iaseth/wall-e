@@ -87,6 +87,7 @@ class WallEApp():
 		x = 0
 		for chessboard in self.chessboards:
 			print(f"({x+1} of {len(self.chessboards)}) Saving chessboard {chessboard} ...")
+			#chessboard.save_to_disk()
 			if chessboard.exists_on_disk():
 				print(f"\tFile already exists: {chessboard.filepath()}")
 			else:

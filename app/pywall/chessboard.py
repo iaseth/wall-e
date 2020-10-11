@@ -45,9 +45,13 @@ class Chessboard():
 				cy_even = cy%2 == 0
 				white = (cx_even and cy_even) or ((not cx_even) and (not cy_even))
 				if white:
-					data[x, y] = primary
+					data[x, y, 0] = primary[0]
+					data[x, y, 1] = primary[1]
+					data[x, y, 2] = primary[2]
 				else:
-					data[x, y] = secondary
+					data[x, y, 0] = secondary[0]
+					data[x, y, 1] = secondary[1]
+					data[x, y, 2] = secondary[2]
 				pass
 			pass
 
