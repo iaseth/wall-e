@@ -98,7 +98,8 @@ class App():
 		for pair in jo["colors"]:
 			primary = self.getColorFromString(pair[0])
 			secondary = self.getColorFromString(pair[1])
-			for resolution in self.resolutions:
+			for resolutionName in jo["resolutions"]:
+				resolution = self.getResolutionFromName(resolutionName)
 				chessboard = Chessboard(primary, secondary, resolution)
 				if chessboard.hasTwoColors():
 					self.chessboards.append(chessboard)
@@ -118,6 +119,12 @@ class App():
 		for color in self.colors:
 			if color.name == colorName:
 				return color
+		return None
+
+	def getResolutionFromName(self, resolutionName):
+		for resolution in self.resolutions:
+			if resolution.name == resolutionName:
+				return resolution
 		return None
 
 	def printColors(self):
