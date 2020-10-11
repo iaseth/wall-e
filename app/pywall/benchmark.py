@@ -20,6 +20,9 @@ class Event():
 class Benchmark():
 	def __init__(self, name):
 		self.name = name
+		self.reset()
+
+	def reset(self):
 		self.init_time = time.monotonic_ns()
 		self.last_time = self.init_time
 		self.events = []

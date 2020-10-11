@@ -7,7 +7,7 @@ class Color():
 		self.color = jsonObject["color"]
 		pass
 
-	def getRGB(self):
+	def get_RGB(self):
 		hex_string = self.color.strip().lstrip("#")
 		if len(hex_string) == 3:
 			red = int(hex_string[0] + hex_string[0], 16)

@@ -10,13 +10,13 @@ from .chessboard import Chessboard
 
 class WallEApp():
 	def __init__(self):
-		self.setupColors()
-		self.setupResolutions()
-		self.setupChessboards()
+		self.setup_colors()
+		self.setup_resolutions()
+		self.setup_chessboards()
 		pass
 
 
-	def setupColors(self):
+	def setup_colors(self):
 		with open("jsons/colors.json") as f:
 			jo = json.loads(f.read())
 
@@ -26,7 +26,7 @@ class WallEApp():
 			self.colors.append(color)
 		pass
 
-	def setupResolutions(self):
+	def setup_resolutions(self):
 		with open("jsons/resolutions.json") as f:
 			jo = json.loads(f.read())
 
@@ -37,60 +37,60 @@ class WallEApp():
 		pass
 
 
-	def getColorFromName(self, colorName):
+	def get_color_from_name(self, colorName):
 		for color in self.colors:
 			if color.name == colorName:
 				return color
 		return None
 
-	def getResolutionFromName(self, resolutionName):
+	def get_resolution_from_name(self, resolutionName):
 		for resolution in self.resolutions:
 			if resolution.name == resolutionName:
 				return resolution
 		return None
 
 
-	def printColors(self):
+	def print_colors(self):
 		for color in self.colors:
 			print(color)
 		pass
 
-	def printResolutions(self):
+	def print_resolutions(self):
 		for resolution in self.resolutions:
 			print(resolution)
 		pass
 
 
-	def setupChessboards(self):
+	def setup_chessboards(self):
 		with open("jsons/chessboards.json") as f:
 			jo = json.loads(f.read())
 		self.chessboards = []
 		for pair in jo["colors"]:
-			primary = self.getColorFromName(pair[0])
-			secondary = self.getColorFromName(pair[1])
+			primary = self.get_color_from_name(pair[0])
+			secondary = self.get_color_from_name(pair[1])
 			for resolutionName in jo["resolutions"]:
-				resolution = self.getResolutionFromName(resolutionName)
+				resolution = self.get_resolution_from_name(resolutionName)
 				chessboard = Chessboard(primary, secondary, resolution)
-				if chessboard.hasTwoColors():
+				if chessboard.has_two_colors():
 					self.chessboards.append(chessboard)
 		pass
 
-	def printChessboards(self):
+	def print_chessboards(self):
 		x = 0
 		for chessboard in self.chessboards:
 			print(f"{x+1}. {chessboard}")
 			x += 1
 		pass
 
-	def saveChessboards(self):
+	def save_chessboards(self):
 		benchmark = Benchmark("saveChessboards")
 		x = 0
 		for chessboard in self.chessboards:
 			print(f"({x+1} of {len(self.chessboards)}) Saving chessboard {chessboard} ...")
-			if chessboard.existsOnDisk():
+			if chessboard.exists_on_disk():
 				print(f"\tFile already exists: {chessboard.filepath()}")
 			else:
-				#chessboard.saveToDisk()
+				#chessboard.save_to_disk()
 				print(f"\tSaved: {chessboard.filepath()}")
 			benchmark.record_event(chessboard)
 			x += 1

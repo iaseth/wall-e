@@ -9,7 +9,7 @@ class Resolution():
 		self.width = jsonObject["width"]
 		pass
 
-	def getNumpyArray(self):
+	def get_numpy_array(self):
 		data = numpy.zeros((self.height, self.width, 3), dtype=numpy.uint8)
 		return data
 

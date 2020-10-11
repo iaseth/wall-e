@@ -24,7 +24,7 @@ def some_stuff():
 
 def chessboard_stuff():
 	app = WallEApp()
-	app.saveChessboards()
+	app.save_chessboards()
 	pass
 
 
