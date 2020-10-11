@@ -8,11 +8,12 @@ class Event():
 		self.start_time = benchmark.last_time
 		self.benchmark = benchmark
 		self.name = name
+		self.index = len(self.benchmark.events)
 		pass
 
 	def print(self):
 		microseconds = (self.end_time - self.start_time) / 1e6
-		print(f"{self.name} took {microseconds}us.")
+		print(f"\t---> {self.index + 1}.{self.benchmark} [{self.name}] took {microseconds}us.")
 		pass
 
 
@@ -30,8 +31,14 @@ class Benchmark():
 		pass
 
 	def print_events(self):
+		microseconds = (self.last_time - self.init_time) / 1e6
+		print(f"Benchmark {self} took {microseconds}us.")
 		for event in self.events:
 			event.print()
+		pass
+
+	def __str__(self):
+		return f"[{self.name}]"
 		pass
 
 
