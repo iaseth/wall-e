@@ -10,7 +10,7 @@ from pywall.chessboard import Chessboard
 
 
 
-class App():
+class WallEApp():
 	def __init__(self):
 		self.setupColors()
 		self.setupResolutions()
@@ -94,7 +94,7 @@ class App():
 
 
 def chessboard_stuff():
-	app = App()
+	app = WallEApp()
 	app.saveChessboards()
 	pass
 
