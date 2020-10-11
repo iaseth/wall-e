@@ -4,6 +4,7 @@
 0.1.2 | charismatic-blackberry | (future)
 -------------------------------------------
   * Added class Nanoseconds for formatting time
+  * Added class SolidColor
 
 
 0.1.1 | brilliant-blackberry | 11-10-2020

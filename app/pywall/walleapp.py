@@ -4,6 +4,8 @@ from .benchmark import Benchmark
 
 from .color import Color
 from .resolution import Resolution
+
+from .solidcolor import SolidColor
 from .chessboard import Chessboard
 
 
@@ -12,6 +14,7 @@ class WallEApp():
 	def __init__(self):
 		self.setup_colors()
 		self.setup_resolutions()
+		self.setup_solidcolors()
 		self.setup_chessboards()
 		pass
 
@@ -60,6 +63,37 @@ class WallEApp():
 			print(resolution)
 		pass
 
+
+	def setup_solidcolors(self):
+		self.solidcolors = []
+		for color in self.colors:
+			for resolution in self.resolutions:
+				solidcolor = SolidColor(resolution, color)
+				self.solidcolors.append(solidcolor)
+		pass
+
+	def print_solidcolors(self):
+		x = 0
+		for solidcolor in self.solidcolors:
+			print(f"{x+1}. {solidcolor}")
+			x += 1
+		pass
+
+	def save_solidcolors(self):
+		benchmark = Benchmark("save_solidcolors")
+		x = 0
+		for solidcolor in self.solidcolors:
+			print(f"({x+1} of {len(self.chessboards)}) Saving solidcolor {solidcolor} ...")
+			#solidcolor.save_to_disk()
+			if solidcolor.exists_on_disk():
+				print(f"\tFile already exists: {solidcolor.filepath()}")
+			else:
+				solidcolor.save_to_disk()
+				print(f"\tSaved: {solidcolor.filepath()}")
+			benchmark.record_event(solidcolor)
+			x += 1
+		benchmark.print_events()
+		pass
 
 	def setup_chessboards(self):
 		with open("jsons/chessboards.json") as f:
