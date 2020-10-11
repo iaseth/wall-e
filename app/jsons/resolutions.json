@@ -1,4 +1,12 @@
 {
+	"best": [
+		{
+			"name": "UHD",
+			"height": 2160,
+			"width": 3840
+		}
+	],
+
 	"resolutions": [
 		{
 			"name": "HD",
