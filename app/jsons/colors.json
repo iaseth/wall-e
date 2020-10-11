@@ -9,5 +9,17 @@
 		{"name": "black", "color": "#000"},
 		{"name": "grey", "color": "#777"},
 		{"name": "white", "color": "#fff"}
+	],
+
+	"pairs": [
+		["black", "facebook"],
+		["black", "instagram"],
+		["black", "linkedin"],
+		["black", "twitter"],
+		["black", "youtube"],
+
+		["black", "grey"],
+		["grey", "white"],
+		["white", "black"]
 	]
 }

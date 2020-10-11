@@ -96,14 +96,11 @@ class WallEApp():
 		pass
 
 	def setup_chessboards(self):
-		with open("jsons/chessboards.json") as f:
-			jo = json.loads(f.read())
 		self.chessboards = []
-		for pair in jo["colors"]:
+		for pair in self.colors_json["pairs"]:
 			primary = self.get_color_from_name(pair[0])
 			secondary = self.get_color_from_name(pair[1])
-			for resolutionName in jo["resolutions"]:
-				resolution = self.get_resolution_from_name(resolutionName)
+			for resolution in self.resolutions:
 				chessboard = Chessboard(primary, secondary, resolution)
 				if chessboard.has_two_colors():
 					self.chessboards.append(chessboard)
