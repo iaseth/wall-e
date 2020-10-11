@@ -21,20 +21,20 @@ class WallEApp():
 
 	def setup_colors(self):
 		with open("jsons/colors.json") as f:
-			jo = json.loads(f.read())
+			self.colors_json = json.loads(f.read())
 
 		self.colors = []
-		for jsonObject in jo["colors"]:
+		for jsonObject in self.colors_json["colors"]:
 			color = Color(jsonObject)
 			self.colors.append(color)
 		pass
 
 	def setup_resolutions(self):
 		with open("jsons/resolutions.json") as f:
-			jo = json.loads(f.read())
+			self.resolutions_json = json.loads(f.read())
 
 		self.resolutions = []
-		for jsonObject in jo["resolutions"]:
+		for jsonObject in self.resolutions_json["resolutions"]:
 			resolution = Resolution(jsonObject)
 			self.resolutions.append(resolution)
 		pass
@@ -83,7 +83,7 @@ class WallEApp():
 		benchmark = Benchmark("save_solidcolors")
 		x = 0
 		for solidcolor in self.solidcolors:
-			print(f"({x+1} of {len(self.chessboards)}) Saving solidcolor {solidcolor} ...")
+			print(f"({x+1} of {len(self.solidcolors)}) Saving solidcolor {solidcolor} ...")
 			#solidcolor.save_to_disk()
 			if solidcolor.exists_on_disk():
 				print(f"\tFile already exists: {solidcolor.filepath()}")

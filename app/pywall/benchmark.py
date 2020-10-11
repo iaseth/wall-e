@@ -30,7 +30,7 @@ class Event():
 
 	def print(self):
 		ns = Nanoseconds(self.end_time - self.start_time)
-		print(f"\t---> {self.index + 1}. {self.benchmark} took {ns} for [{self.name}].")
+		print(f"\t---> {self.index + 1:3}. {self.benchmark} took {ns} for {self.name}.")
 		pass
 
 
