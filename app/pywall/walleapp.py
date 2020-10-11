@@ -1,5 +1,7 @@
 import json
 
+from .benchmark import Benchmark
+
 from .color import Color
 from .resolution import Resolution
 from .chessboard import Chessboard
@@ -81,6 +83,7 @@ class WallEApp():
 		pass
 
 	def saveChessboards(self):
+		benchmark = Benchmark("saveChessboards")
 		x = 0
 		for chessboard in self.chessboards:
 			print(f"({x+1} of {len(self.chessboards)}) Saving chessboard {chessboard} ...")
@@ -89,7 +92,9 @@ class WallEApp():
 			else:
 				#chessboard.saveToDisk()
 				print(f"\tSaved: {chessboard.filepath()}")
+			benchmark.record_event(chessboard.filepath())
 			x += 1
+		benchmark.print_events()
 		pass
 
 

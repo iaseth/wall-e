@@ -38,8 +38,8 @@ def test_stuff():
 
 
 def main():
-	#chessboard_stuff()
-	test_stuff()
+	chessboard_stuff()
+	#test_stuff()
 	pass
 
 
