@@ -105,16 +105,6 @@ class App():
 					self.chessboards.append(chessboard)
 		pass
 
-	def setupAllChessboards(self):
-		self.chessboards = []
-		for primary in self.colors:
-			for secondary in self.colors:
-				for resolution in self.resolutions:
-					chessboard = Chessboard(primary, secondary, resolution)
-					if chessboard.hasTwoColors():
-						self.chessboards.append(chessboard)
-		pass
-
 	def getColorFromName(self, colorName):
 		for color in self.colors:
 			if color.name == colorName:
