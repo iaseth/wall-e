@@ -44,6 +44,9 @@ class Benchmark():
 		self.last_time = self.init_time
 		self.events = []
 
+	def get_nanoseconds(self):
+		return (self.last_time - self.init_time)
+
 	def record_event(self, name):
 		event = Event(self, name)
 		self.last_time = event.end_time
@@ -51,7 +54,7 @@ class Benchmark():
 		pass
 
 	def print_events(self):
-		ns = Nanoseconds(self.last_time - self.init_time)
+		ns = Nanoseconds(self.get_nanoseconds())
 		print(f"Benchmark {self} took {ns}.")
 		for event in self.events:
 			event.print()
