@@ -3,5 +3,9 @@
 		["black", "grey"],
 		["grey", "white"],
 		["white", "black"]
+	],
+
+	"resolutions": [
+		"UHD"
 	]
 }
