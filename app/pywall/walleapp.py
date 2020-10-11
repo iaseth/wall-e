@@ -92,7 +92,7 @@ class WallEApp():
 			else:
 				#chessboard.saveToDisk()
 				print(f"\tSaved: {chessboard.filepath()}")
-			benchmark.record_event(chessboard.filepath())
+			benchmark.record_event(chessboard)
 			x += 1
 		benchmark.print_events()
 		pass
