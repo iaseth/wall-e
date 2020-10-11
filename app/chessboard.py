@@ -92,10 +92,10 @@ class App():
 		pass
 
 	def setupChessboards(self):
-		with open("jsons/colors.json") as f:
+		with open("jsons/chessboards.json") as f:
 			jo = json.loads(f.read())
 		self.chessboards = []
-		for pair in jo["chessboards"]:
+		for pair in jo["colors"]:
 			primary = self.getColorFromString(pair[0])
 			secondary = self.getColorFromString(pair[1])
 			for resolution in self.resolutions:
