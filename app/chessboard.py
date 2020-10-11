@@ -92,6 +92,19 @@ class App():
 		pass
 
 	def setupChessboards(self):
+		with open("jsons/colors.json") as f:
+			jo = json.loads(f.read())
+		self.chessboards = []
+		for pair in jo["chessboards"]:
+			primary = self.getColorFromString(pair[0])
+			secondary = self.getColorFromString(pair[1])
+			for resolution in self.resolutions:
+				chessboard = Chessboard(primary, secondary, resolution)
+				if chessboard.hasTwoColors():
+					self.chessboards.append(chessboard)
+		pass
+
+	def setupAllChessboards(self):
 		self.chessboards = []
 		for primary in self.colors:
 			for secondary in self.colors:
@@ -100,6 +113,12 @@ class App():
 					if chessboard.hasTwoColors():
 						self.chessboards.append(chessboard)
 		pass
+
+	def getColorFromString(self, colorName):
+		for color in self.colors:
+			if color.name == colorName:
+				return color
+		return None
 
 	def printColors(self):
 		for color in self.colors:
