@@ -6,7 +6,7 @@ from pywall.walleapp import WallEApp
 
 
 
-def some_stuff():
+def test_stuff():
 	data = numpy.zeros((1024, 1024, 3), dtype=numpy.uint8)
 	max_pixel = 1024
 	for x in range(0, max_pixel):
@@ -22,24 +22,15 @@ def some_stuff():
 	pass
 
 
-def chessboard_stuff():
+def pywall_stuff():
 	app = WallEApp()
-	#app.save_chessboards()
+	app.save_chessboards()
 	app.save_solidcolors()
 	pass
 
 
-def test_stuff():
-	number = 0
-	for x in range(0, 1000):
-		for y in range(0, 1000):
-			for z in range(0, 100):
-				number += 1
-	pass
-
-
 def main():
-	chessboard_stuff()
+	pywall_stuff()
 	#test_stuff()
 	pass
 
