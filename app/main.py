@@ -28,8 +28,18 @@ def chessboard_stuff():
 	pass
 
 
+def test_stuff():
+	number = 0
+	for x in range(0, 1000):
+		for y in range(0, 1000):
+			for z in range(0, 100):
+				number += 1
+	pass
+
+
 def main():
-	chessboard_stuff()
+	#chessboard_stuff()
+	test_stuff()
 	pass
 
 
