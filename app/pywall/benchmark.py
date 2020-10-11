@@ -1,5 +1,22 @@
+import math
 import time
 
+
+
+class Nanoseconds():
+	def __init__(self, nanoseconds):
+		self.seconds = math.floor(nanoseconds / 1e9)
+		nanoseconds = nanoseconds % 1e9
+		self.ms = math.floor(nanoseconds / 1e6)
+		nanoseconds = nanoseconds % 1e6
+		self.us = math.floor(nanoseconds / 1e3)
+		nanoseconds = nanoseconds % 1e3
+		self.ns = math.floor(nanoseconds % 1000)
+		pass
+
+	def __str__(self):
+		return f"[{self.seconds:3}s|{self.ms:3}ms|{self.us:3}us|{self.ns:3}ns]".replace("|", " ")
+		pass
 
 
 class Event():
@@ -12,8 +29,8 @@ class Event():
 		pass
 
 	def print(self):
-		microseconds = (self.end_time - self.start_time) / 1e6
-		print(f"\t---> {self.index + 1}.{self.benchmark} [{self.name}] took {microseconds}us.")
+		ns = Nanoseconds(self.end_time - self.start_time)
+		print(f"\t---> {self.index + 1}. {self.benchmark} took {ns} for [{self.name}].")
 		pass
 
 
@@ -34,8 +51,8 @@ class Benchmark():
 		pass
 
 	def print_events(self):
-		microseconds = (self.last_time - self.init_time) / 1e6
-		print(f"Benchmark {self} took {microseconds}us.")
+		ns = Nanoseconds(self.last_time - self.init_time)
+		print(f"Benchmark {self} took {ns}.")
 		for event in self.events:
 			event.print()
 		pass

@@ -1,6 +1,11 @@
 
 
 
+0.1.2 | charismatic-blackberry | (future)
+-------------------------------------------
+  * Added class Nanoseconds for formatting time
+
+
 0.1.1 | brilliant-blackberry | 11-10-2020
 -----------------------------------------
   * Added class: Benchmark
