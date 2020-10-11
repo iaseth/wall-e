@@ -38,10 +38,10 @@ class Chessboard():
 
 		self.benchmark.record_event("before the loop")
 		for x in range(0, self.resolution.height):
+			cx = math.floor(x / cell_height)
+			cx_even = cx%2 == 0
 			for y in range(0, self.resolution.width):
-				cx = math.floor(x / cell_height)
 				cy = math.floor(y / cell_width)
-				cx_even = cx%2 == 0
 				cy_even = cy%2 == 0
 				white = (cx_even and cy_even) or ((not cx_even) and (not cy_even))
 				if white:
