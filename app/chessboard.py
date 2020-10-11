@@ -96,8 +96,8 @@ class App():
 			jo = json.loads(f.read())
 		self.chessboards = []
 		for pair in jo["colors"]:
-			primary = self.getColorFromString(pair[0])
-			secondary = self.getColorFromString(pair[1])
+			primary = self.getColorFromName(pair[0])
+			secondary = self.getColorFromName(pair[1])
 			for resolutionName in jo["resolutions"]:
 				resolution = self.getResolutionFromName(resolutionName)
 				chessboard = Chessboard(primary, secondary, resolution)
@@ -115,7 +115,7 @@ class App():
 						self.chessboards.append(chessboard)
 		pass
 
-	def getColorFromString(self, colorName):
+	def getColorFromName(self, colorName):
 		for color in self.colors:
 			if color.name == colorName:
 				return color
