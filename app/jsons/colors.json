@@ -3,5 +3,11 @@
 		{"name": "black", "color": "#000"},
 		{"name": "grey", "color": "#777"},
 		{"name": "white", "color": "#fff"}
+	],
+
+	"chessboards": [
+		["black", "grey"],
+		["grey", "white"],
+		["white", "black"]
 	]
 }
