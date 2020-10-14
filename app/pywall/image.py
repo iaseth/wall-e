@@ -89,6 +89,10 @@ class WallEImage():
 			pass
 		pass
 
+	def fill_square(self, start_x, start_y, side_width, color):
+		self.fill_rectangle(start_x, start_y, side_width, side_width, color)
+		pass
+
 	def fill_rectangle(self, start_x, start_y, height, width, color):
 		if self.resolution != None:
 			end_x = (start_x + height) if (start_x + height) < self.resolution.height else self.resolution.height
