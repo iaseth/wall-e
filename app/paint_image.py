@@ -11,6 +11,7 @@ def main():
 	im.fill_background()
 	im.fill_horizontal_strip(400, 200, im.colors[2])
 	im.fill_vertical_strip(400, 200, im.colors[2])
+	im.fill_border(100, im.colors[2])
 	im.save_to_disk()
 	im.print()
 	pass
