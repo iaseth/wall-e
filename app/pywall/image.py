@@ -11,13 +11,13 @@ from .resolution import Resolution
 
 
 class WallEImage():
-	def __init__(self):
+	def __init__(self, name):
+		self.name = name
 		self.setup_colors()
 		self.setup_resolutions()
 		self.resolution = None
 		self.background = None
 		self.data = None
-		self.name = None
 		pass
 
 
