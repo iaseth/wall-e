@@ -89,6 +89,16 @@ class WallEImage():
 			pass
 		pass
 
+	def fill_horizontal_strip(self, start_x, width, color):
+		if self.resolution != None:
+			self.fill_rectangle(start_x, 0, width, self.resolution.width, color)
+		pass
+
+	def fill_vertical_strip(self, start_y, width, color):
+		if self.resolution != None:
+			self.fill_rectangle(0, start_y, self.resolution.height, width, color)
+		pass
+
 	def fill_square(self, start_x, start_y, side_width, color):
 		self.fill_rectangle(start_x, start_y, side_width, side_width, color)
 		pass

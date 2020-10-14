@@ -9,7 +9,8 @@ def main():
 	im.set_resolution("UHD")
 	im.set_background("facebook")
 	im.fill_background()
-	im.fill_square(100, 100, 200, im.colors[2])
+	im.fill_horizontal_strip(400, 200, im.colors[2])
+	im.fill_vertical_strip(400, 200, im.colors[2])
 	im.save_to_disk()
 	im.print()
 	pass
