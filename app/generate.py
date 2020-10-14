@@ -24,8 +24,9 @@ def test_stuff():
 
 def generate_stuff():
 	app = WallEApp()
-	app.save_chessboards()
-	app.save_solidcolors()
+	#app.save_chessboards()
+	#app.save_solidcolors()
+	app.save_fullsquares()
 	pass
 
 

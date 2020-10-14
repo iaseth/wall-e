@@ -7,6 +7,7 @@ from .resolution import Resolution
 
 from .solidcolor import SolidColor
 from .chessboard import Chessboard
+from .fullsquare import FullSquare
 
 
 
@@ -16,6 +17,7 @@ class WallEApp():
 		self.setup_resolutions()
 		self.setup_solidcolors()
 		self.setup_chessboards()
+		self.setup_fullsquares()
 		pass
 
 
@@ -95,6 +97,7 @@ class WallEApp():
 		benchmark.print_events()
 		pass
 
+
 	def setup_chessboards(self):
 		self.chessboards = []
 		for pair in self.colors_json["pairs"]:
@@ -125,6 +128,41 @@ class WallEApp():
 				chessboard.save_to_disk()
 				print(f"\tSaved: {chessboard.filepath()}")
 			benchmark.record_event(chessboard)
+			x += 1
+		benchmark.print_events()
+		pass
+
+
+	def setup_fullsquares(self):
+		self.fullsquares = []
+		for pair in self.colors_json["pairs"]:
+			primary = self.get_color_from_name(pair[0])
+			secondary = self.get_color_from_name(pair[1])
+			for resolution in self.resolutions:
+				fullsquare = FullSquare(primary, secondary, resolution)
+				if fullsquare.has_two_colors():
+					self.fullsquares.append(fullsquare)
+		pass
+
+	def print_fullsquares(self):
+		x = 0
+		for fullsquare in self.fullsquares:
+			print(f"{x+1}. {fullsquare}")
+			x += 1
+		pass
+
+	def save_fullsquares(self):
+		benchmark = Benchmark("save_fullsquares")
+		x = 0
+		for fullsquare in self.fullsquares:
+			print(f"({x+1} of {len(self.fullsquares)}) Saving fullsquare {fullsquare} ...")
+			#fullsquare.save_to_disk()
+			if fullsquare.exists_on_disk():
+				print(f"\tFile already exists: {fullsquare.filepath()}")
+			else:
+				fullsquare.save_to_disk()
+				print(f"\tSaved: {fullsquare.filepath()}")
+			benchmark.record_event(fullsquare)
 			x += 1
 		benchmark.print_events()
 		pass
