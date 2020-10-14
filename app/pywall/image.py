@@ -83,13 +83,23 @@ class WallEImage():
 
 	def fill_background(self):
 		if self.resolution != None:
-			background = self.background.get_RGB()
+			if self.background != None:
+				self.fill_rectangle(0, 0, self.resolution.height, self.resolution.width, self.background)
+				pass
+			pass
+		pass
+
+	def fill_rectangle(self, start_x, start_y, height, width, color):
+		if self.resolution != None:
+			end_x = (start_x + height) if (start_x + height) < self.resolution.height else self.resolution.height
+			end_y = (start_y + width) if (start_y + width) < self.resolution.width else self.resolution.width
+			color_rgb = color.get_RGB()
 			data = self.data
-			for x in range(0, self.resolution.height):
-				for y in range(0, self.resolution.width):
-					data[x, y, 0] = background[0]
-					data[x, y, 1] = background[1]
-					data[x, y, 2] = background[2]
+			for x in range(start_x, end_x):
+				for y in range(start_y, end_y):
+					data[x, y, 0] = color_rgb[0]
+					data[x, y, 1] = color_rgb[1]
+					data[x, y, 2] = color_rgb[2]
 					pass
 				pass
 			pass
